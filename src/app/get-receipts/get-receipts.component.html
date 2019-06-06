@@ -1,0 +1,25 @@
+<p-dataView #dv [value]="receipts" [paginator]="true" [rows]="12" filterBy="category" layout="grid">
+  <p-header>List of Receipts
+    <button pButton type="button" class ="btn btn-primary" (click)="makeAllVisible()">Make all visible</button>
+  </p-header>
+  <p-footer><div [ngClass]="{low: getSum()<100, medium: getSum()>100&&getSum()<1000, high: getSum()>1000}"><h1 >SUM: {{getSum()}}</h1></div>
+    <input type="search" pInputText placeholder="Search by category" (keyup)="dv.filter($event.target.value)">
+
+  </p-footer>
+
+  <ng-template let-receipt pTemplate="gridItem">
+    <div style="padding:.5em" class="ui-g-8 ui-md-3">
+      <div class="cell" *ngIf="receipt.visibility===true">
+        <p-panel [header]="receipt.name" [style]="{'text-align':'center'}">
+          <div class="money">Cost: <b>{{receipt.money}}</b></div>
+          <div class="category">Category: <b>{{receipt.category}}</b></div>
+          <div class="image"><img [src] = 'getImage(receipt.category)'></div>
+          <hr class="ui-widget-content" style="border-top:0">
+          <button pButton type="button" class="pi pi-times-circle" (click)="hide(receipt)"></button>
+        </p-panel>
+      </div>
+    </div>
+
+  </ng-template>
+</p-dataView>
+

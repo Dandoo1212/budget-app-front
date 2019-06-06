@@ -13,15 +13,20 @@ export class AppComponent implements OnInit {
     this.items = [
       {
         label: 'Check your receipts',
-        icon: 'pi pi-list'
+        icon: 'pi pi-list',
+        routerLink: 'receipts'
       },
+      {separator: true},
       {
         label: 'Add Receipt',
-        icon: 'pi pi-money-bill'
+        icon: 'pi pi-money-bill',
+        routerLink: 'post'
       },
+      {separator: true},
       {
         label: 'Show diagram',
-        icon: 'pi pi-info'
+        icon: 'pi pi-info',
+        routerLink: 'chart'
       }
     ];
   }

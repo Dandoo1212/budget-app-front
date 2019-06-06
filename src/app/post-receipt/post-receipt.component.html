@@ -1,0 +1,38 @@
+<div class="container">
+
+  <form [formGroup]="receiptForm" class="form-group" (ngSubmit)="postReceipt()">
+    <div class="fields">
+
+      <div class="input">
+        <label for="name" class="label">Receipt name</label>
+        <input type="text" id="name" class="form-control" formControlName="name"
+               [ngClass]="{'invalid': !receiptForm.controls['name'].valid
+          && receiptForm.controls['name'].touched}">
+        <b class="alert" *ngIf="!receiptForm.controls['name'].valid && receiptForm.controls['name'].touched">
+          Only letters </b>
+      </div>
+
+      <div class="input">
+        <label for="money" class="label">Cost</label>
+        <input type="text" id="money" class="form-control" formControlName="money"
+               [ngClass]="{'invalid': !receiptForm.controls['money'].valid
+          && receiptForm.controls['money'].touched}">
+        <b class="alert" *ngIf="!receiptForm.controls['money'].valid && receiptForm.controls['money'].touched">
+          Only Numbers </b>
+      </div>
+
+      <div class="input">
+        <label for="category" class="label">Category</label>
+        <select id="category" class="form-control" formControlName="category"
+                [ngClass]="{'invalid': !receiptForm.controls['category'].valid
+          && receiptForm.controls['category'].touched}">
+          <option *ngFor="let category of categories" value='{{category}}'> {{category|categoryKey}}</option>
+        </select>
+        <b class="alert" *ngIf="!receiptForm.controls['category'].valid && receiptForm.controls['category'].touched">
+          Required </b>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-primary" routerLink="/receipts" [disabled]="!receiptForm.valid">Post Receipt</button>
+    </div>
+  </form>
+</div>

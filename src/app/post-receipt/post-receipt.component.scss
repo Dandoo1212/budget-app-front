@@ -1,0 +1,56 @@
+.container{
+  display: flex;
+  justify-content: center;
+
+}
+
+.fields{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-around;
+  padding: 1em;
+
+}
+.label{
+  animation-name:szerokosc;
+  animation-duration:0.5s;
+  animation-iteration-count:1;
+  -webkit-animation-name:szerokosc;
+  -webkit-animation-duration:0.5s;
+}
+
+.input{
+  display: flex;
+  width: 15em;
+  flex-flow: column wrap;
+}
+
+@keyframes szerokosc
+{
+  0% { width:6em; }
+  100% { width:15em; }
+}
+
+@-webkit-keyframes szerokosc
+{
+  0% { width:6em; }
+  100% { width:15em; }
+}
+
+.form-group{
+  display:flex;
+  justify-content: center;
+  border: 1px solid gray;
+  width:20em;
+
+}
+
+label{
+  display: flex;
+  justify-content: center;
+}
+.invalid{
+  background-color: pink;
+  border: 2px solid red;
+}

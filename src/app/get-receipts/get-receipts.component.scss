@@ -1,0 +1,38 @@
+.cell{
+  width: 20em;
+  animation-name:animacja;
+  animation-duration:0.5s;
+  animation-iteration-count:1;
+  -webkit-animation-name:animacja;
+  -webkit-animation-duration:0.5s;
+
+}
+
+@keyframes animacja
+{
+  0% { width: 15em}
+  100% { width: 20em }
+}
+
+@-webkit-keyframes animacja
+{
+  0% { width: 15em}
+  100% { width: 20em }
+}
+
+.image img{
+  width: 7em;
+  height: 7em;
+
+}
+.low{
+  color:greenyellow;
+}
+
+.medium{
+  color:orange;
+}
+
+.high{
+  color:red;
+}
