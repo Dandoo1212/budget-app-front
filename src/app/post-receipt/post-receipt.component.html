@@ -32,7 +32,17 @@
           Required </b>
       </div>
       <hr>
-      <button type="submit" class="btn btn-primary" routerLink="/receipts" [disabled]="!receiptForm.valid">Post Receipt</button>
+      <button type="submit" class="btn btn-primary"  [disabled]="!receiptForm.valid"  >Post Receipt</button>
     </div>
   </form>
 </div>
+
+<p-toast [style]="{marginTop: '3rem'}" position="top-right" key="tl">
+  <ng-template let-message pTemplate="message">
+    <div style="text-align: center">
+      <i class="pi pi-check" style="font-size: 3em"></i>
+      <h3>{{message.summary}}</h3>
+      <p>{{message.detail}}</p>
+    </div>
+  </ng-template>
+</p-toast>

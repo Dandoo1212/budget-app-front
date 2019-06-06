@@ -1,8 +1,9 @@
-<p-dataView #dv [value]="receipts" [paginator]="true" [rows]="12" filterBy="category" layout="grid">
+<p-dataView #dv [value]="receipts" [paginator]="true" [rows]="8" filterBy="category" layout="grid">
   <p-header>List of Receipts
     <button pButton type="button" class ="btn btn-primary" (click)="makeAllVisible()">Make all visible</button>
   </p-header>
-  <p-footer><div [ngClass]="{low: getSum()<100, medium: getSum()>100&&getSum()<1000, high: getSum()>1000}"><h1 >SUM: {{getSum()}}</h1></div>
+  <p-footer><div [ngClass]="{low: getSum()<100, medium: getSum()>100&&getSum()<1000, high: getSum()>1000}"
+                 class="label label-default"><h1 >SUM: {{getSum()}}</h1></div>
     <input type="search" pInputText placeholder="Search by category" (keyup)="dv.filter($event.target.value)">
 
   </p-footer>
