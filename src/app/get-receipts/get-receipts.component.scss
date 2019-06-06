@@ -10,20 +10,20 @@
 
 @keyframes animacja
 {
-  0% { width: 15em}
+  0% { width: 5em}
   100% { width: 20em }
 }
 
 @-webkit-keyframes animacja
 {
-  0% { width: 15em}
+  0% { width: 5em}
   100% { width: 20em }
 }
 
 .image img{
   width: 7em;
   height: 7em;
-
+  border-radius: 50%;
 }
 .low{
   color:greenyellow;
