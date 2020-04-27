@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryEnum} from '../_shared/category.enum';
 import {Category} from '../_shared/category';
 import {CategoryService} from '../_shared/category.service';
+import {CategoryResponse} from "../_shared/category-response";
 
 
 @Component({
@@ -13,20 +14,22 @@ export class ChartComponent implements OnInit {
 
   public categories: Category[];
   public data: any;
+  public sums: number[]
 
   constructor(private categoryService: CategoryService) {
     this.getCategories();
-
   }
 
   ngOnInit() {
   }
 
   private getCategories() {
-    this.categoryService.getAllCategories().subscribe((response: Category[]) => {
-      this.categories = response;
-      this.prepareData();
+    this.categoryService.getAllCategories().subscribe((response: CategoryResponse) => {
+      this.categories = response.categories;
+      this.getMoney(response.categories)
+      this.prepareData()
     });
+
   }
 
   private prepareData() {
@@ -34,7 +37,7 @@ export class ChartComponent implements OnInit {
       labels: Object.keys(CategoryEnum),
       datasets: [
         {
-          data: this.getMoney(),
+          data: this.sums,
           backgroundColor: [
             '#003f5c',
             '#374c80',
@@ -57,11 +60,10 @@ export class ChartComponent implements OnInit {
     };
   }
 
-  private getMoney(): number[] {
-    const tab: number[] = [];
-    for (const category of this.categories) {
-      tab.push(category.sumOfMoney);
+  private getMoney(response: Category[]) {
+    this.sums = []
+    for (const category of response) {
+      this.sums.push(category.sumOfMoney)
     }
-    return tab;
   }
 }
